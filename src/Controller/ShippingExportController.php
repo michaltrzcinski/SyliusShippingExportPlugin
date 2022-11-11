@@ -14,6 +14,7 @@ use BitBag\SyliusShippingExportPlugin\Event\ExportShipmentEvent;
 use BitBag\SyliusShippingExportPlugin\Repository\ShippingExportRepositoryInterface;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\Model\ResourceInterface;
+use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Webmozart\Assert\Assert;
@@ -21,7 +22,7 @@ use Webmozart\Assert\Assert;
 final class ShippingExportController extends ResourceController
 {
     /** @var ShippingExportRepositoryInterface */
-    protected $repository;
+    protected RepositoryInterface|ShippingExportRepositoryInterface $repository;
 
     public function exportAllNewShipmentsAction(Request $request): RedirectResponse
     {
